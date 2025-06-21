@@ -1,0 +1,40 @@
+
+.perfilCard {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+}
+
+.imagemPerfil {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.userImage {
+  border-radius: 50%;
+  width: 120px; 
+  height: 120px;
+}
+
+.MuiTextField-root {
+  margin-bottom: 15px;
+}
+
+#profileForm .MuiTextField-root {
+  width: 100%;
+}
+
+#profileForm .MuiButton-root {
+  width: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+.MuiCardHeader-title {
+  color: #9cc444;
+  font-weight: bold;
+} 
+
+

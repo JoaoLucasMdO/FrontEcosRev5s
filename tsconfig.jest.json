@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs", // Jest runs in Node.js, so CommonJS is preferred
+    "target": "es6", // Target ES6 for compatibility
+    "jsx": "react-jsx", // If you're using JSX in tests
+    "esModuleInterop": true, // To handle ES6 modules
+    "allowJs": true, // Allows Jest to handle JavaScript files if needed
+    "noEmit": true, // Prevent emitting compiled output during testing
+    "isolatedModules": true, // To ensure faster compilation in tests
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js"], // Include test files (and possibly JavaScript files)
+  "exclude": ["node_modules", ".next"] // Exclude Next.js build artifacts
+}
