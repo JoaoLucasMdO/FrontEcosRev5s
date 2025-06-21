@@ -1,5 +1,4 @@
 import { Alert, AlertTitle, CircularProgress } from "@mui/material";
-import axios from "axios";
 import { userService } from "../../../routes/userRoute";
 import { useEffect, useState } from "react";
 import { IBeneficios } from "@/interfaces/IBeneficios";

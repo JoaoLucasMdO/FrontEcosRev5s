@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const api = axios.create({
-  baseURL: "https://ecos-rev.vercel.app/", // Substitua pela URL da sua API
+  baseURL: "http://18.215.24.30/api", 
   headers: {
     "Content-Type": "application/json",
   },

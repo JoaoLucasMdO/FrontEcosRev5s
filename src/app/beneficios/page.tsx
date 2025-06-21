@@ -4,7 +4,6 @@ import CustomTable from "@/components/UI/organisms/CustomTable";
 import Layout from "@/components/UI/organisms/Layout";
 import { env } from "@/config/env";
 import { Container } from "@mui/material";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { benefitsService } from "../../../routes/benefitRoute";
 import { IBeneficios } from "@/interfaces/IBeneficios";
