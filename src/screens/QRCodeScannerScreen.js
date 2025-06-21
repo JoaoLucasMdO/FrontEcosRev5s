@@ -5,10 +5,9 @@ import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useTheme } from '../contexts/ThemeContext';
 import { useFontSettings } from '../contexts/FontContext';
 import CustomAlert from '../components/CustomAlert';
-import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import { API_URL, API_BASE_URL } from "@env";
+import api from '../services/api';
 
 export default function QRCodeScanner() {
   const [permission, requestPermission] = useCameraPermissions();
@@ -54,7 +53,7 @@ export default function QRCodeScanner() {
     if (!token) return 0;
 
     try {
-      const response = await axios.get(`${API_URL}/usuario/pontos`, {
+      const response = await api.get(`/usuario/pontos`, {
         headers: { "access-token": token }
       });
 
@@ -74,13 +73,13 @@ export default function QRCodeScanner() {
     const currentPoints = await fetchUserPoints();
     const newPoints = currentPoints + pontos;
 
-    await axios.put(
-      `${API_URL}/usuario/pontos`,
+    await api.put(
+      `/usuario/pontos`,
       { pontos: newPoints },
       { headers: { "access-token": token } }
     );
 
-    await axios.post(`${API_URL}/hist/pontos`, {
+    await api.post(`/hist/pontos`, {
         idUser: await AsyncStorage.getItem('user'),
         points: pontos,
         id: hash

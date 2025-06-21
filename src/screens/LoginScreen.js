@@ -8,19 +8,12 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useFontSettings } from '../contexts/FontContext';
 import { loginSchema } from '../utils/validationSchemas';
 import AuthForm from '../components/AuthForm';
-import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RegisterForm from '../components/RegisterForm';
 import ForgotPasswordForm from '../components/ForgotPasswordForm';
-import { API_URL } from "@env";
+import api from '../services/api';
 
 
-// Create a base URL constant for your API
-// Create an axios instance with the base URL
-const api = axios.create({
-    baseURL: API_URL,
-    timeout: 10000
-});
 
 export default function LoginScreen() {
     const navigation = useNavigation();

@@ -5,11 +5,10 @@ import { useTheme } from "../contexts/ThemeContext";
 import { useFontSettings } from "../contexts/FontContext";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomAlert from "../components/CustomAlert";
-import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect, useRoute } from '@react-navigation/native';
 import { useCallback } from 'react';
-import { API_URL} from "@env";
+import api from "../services/api";
 
 
 const BenefitsScreen = () => {
@@ -43,7 +42,7 @@ const BenefitsScreen = () => {
       const token = await getToken();
       if (!token) return;
 
-      const response = await axios.get(`${API_URL}/usuario/pontos`, {
+      const response = await api.get(`/usuario/pontos`, {
         headers: { "access-token": token }
       });
 
@@ -60,7 +59,7 @@ const BenefitsScreen = () => {
       const token = await getToken();
       if (!token) return;
 
-      const response = await axios.get(`${API_URL}/beneficio`, {
+      const response = await api.get(`/beneficio`, {
         headers: { "access-token": token }
       });
 
@@ -104,8 +103,8 @@ const BenefitsScreen = () => {
     console.log(selectedBenefit)
     // If it's just an informational alert (error or success), simply close it
     try {
-      const response = await axios.post(
-        `${API_URL}/hist/transacoes`,
+      const response = await api.post(
+        `/hist/transacoes`,
         {
           idUser: await AsyncStorage.getItem('user'),
           points: selectedBenefit.pontos,
@@ -136,16 +135,16 @@ const BenefitsScreen = () => {
 
       // 1. Update user points (subtract benefit points)
       const newPoints = userPoints - selectedBenefit.pontos;
-      await axios.put(
-        `${API_URL}/usuario/pontos`,
+      await api.put(
+        `/usuario/pontos`,
         { pontos: newPoints },
         { headers: { "access-token": token } }
       );
 
       // 2. Update benefit quantity (decrement by 1)
       const newQuantity = selectedBenefit.quantidade - 1;
-      await axios.put(
-        `${API_URL}/beneficio/resgate`,
+      await api.put(
+        `/beneficio/resgate`,
         {
           _id: selectedBenefit._id,
           quantidade: newQuantity

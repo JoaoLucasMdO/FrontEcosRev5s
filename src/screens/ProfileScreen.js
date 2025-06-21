@@ -8,8 +8,8 @@ import CustomAlert from '../components/CustomAlert';
 import PasswordModal from '../components/PasswordModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
-import axios from 'axios';
-import { API_URL } from "@env";
+import api from '../services/api';
+
 
 
 export default function ProfileScreen() {
@@ -50,7 +50,7 @@ export default function ProfileScreen() {
       const token = await AsyncStorage.getItem('token');
       if (!token) return;
 
-      const response = await axios.get(`${API_URL}/usuario/pontos`, {
+      const response = await api.get(`/usuario/pontos`, {
         headers: { "access-token": token }
       });
 
@@ -199,7 +199,7 @@ export default function ProfileScreen() {
           const userId = userData._id;
 
           // Faz a requisição DELETE para apagar a conta
-          await axios.delete(`${API_URL}/usuario/${userId}`, {
+          await api.delete(`/usuario/${userId}`, {
             headers: { "access-token": token }
           });
 

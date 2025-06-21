@@ -6,14 +6,11 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useFontSettings } from '../contexts/FontContext';
 import { resetPasswordSchema } from '../utils/validationSchemas';
 import AuthForm from '../components/AuthForm';
-import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { API_URL } from "@env";
+import api from '../services/api';
 
-const api = axios.create({
-  baseURL: API_URL,
-  timeout: 10000
-});
+
+
 
 export default function ResetPasswordScreen() {
     const navigation = useNavigation();

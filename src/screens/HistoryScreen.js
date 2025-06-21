@@ -6,10 +6,9 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useFontSettings } from '../contexts/FontContext';
 import { ArrowUp, ArrowDown } from 'lucide-react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {API_URL } from "@env";
-import axios from 'axios';
+import api from '../services/api';
 
-// Você precisa definir sua URL base da AP; // Substitua pela sua URL
+
 
 const groupByMonth = (data) => {
   const grouped = {};
@@ -78,7 +77,7 @@ const HistoryScreen = ({ route }) => {
   const fetchHistory = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${API_URL}/hist/${await AsyncStorage.getItem("user")}`);
+      const response = await api.get(`/hist/${await AsyncStorage.getItem("user")}`);
 
       if (response.status !== 200) {
         throw new Error('Erro ao buscar histórico');
