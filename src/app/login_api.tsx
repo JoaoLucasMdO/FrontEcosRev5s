@@ -17,7 +17,7 @@ export async function login(
   senha: string
 ): Promise<string | null> {
   try {
-    const response = await api.post<LoginResponse>("/api/usuario/login", {
+    const response = await api.post<LoginResponse>("/usuario/login", {
       email,
       senha,
     });
