@@ -138,21 +138,6 @@ jobs:
             echo "Repositório $REPO_NAME já existe no Docker Hub."
           fi
 
-      - name: Inserir versão no index.js
-        if: steps.version.outputs.should_deploy == 'true'
-        run: |
-          echo "🔧 Inserindo versão no src/index.js"
-          VERSION=${{ steps.version.outputs.new_version }}
-
-          # Substituir ou adicionar linha com a versão
-          sed -i '/<\/Container>/i \
-            <Row className="mt-3">\
-              <Col>\
-                <p style={{ textAlign: "center", fontStyle: "italic" }}>Versão: '"$VERSION"'</p>\
-              </Col>\
-            </Row>' src/index.js
-
-          echo "✅ Versão $VERSION inserida no frontend"
 
       - name: Criar imagem docker
         if: steps.version.outputs.should_deploy == 'true'
