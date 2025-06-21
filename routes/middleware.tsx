@@ -1,7 +1,7 @@
 import axios from "axios";
 import { string } from "yup";
 const api = axios.create({
-  baseURL: "https://ecos-rev.vercel.app/api",
+  baseURL: "http://18.215.24.30/api",
   headers: {
     "Content-Type": "application/json",
   },
