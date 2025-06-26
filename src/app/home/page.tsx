@@ -209,7 +209,7 @@ function DownloadApkButton() {
           },
         }}
       >
-        <span>Baixar APK</span>
+        <span>Download APK</span>
       </Box>
     </a>
   );
