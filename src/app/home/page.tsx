@@ -55,6 +55,7 @@ export default function Home() {
       <Introduction />
       <Services />
       <Testimonials />
+      <DownloadApkButton />
     </Layout>
   );
 }
@@ -172,5 +173,44 @@ function Testimonials() {
         </Grid>
       </Container>
     </Box>
+  );
+}
+
+function DownloadApkButton() {
+  return (
+    <a
+      href="https://bucketjoao01.s3.us-east-1.amazonaws.com/EcosRev.apk"
+      download
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        position: "fixed",
+        bottom: 24,
+        right: 24,
+        zIndex: 1000,
+        textDecoration: "none",
+      }}
+    >
+      <Box
+        sx={{
+          backgroundColor: "primary.main",
+          color: "white",
+          px: 3,
+          py: 1.5,
+          borderRadius: 3,
+          boxShadow: 3,
+          fontWeight: "bold",
+          fontSize: 18,
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          "&:hover": {
+            backgroundColor: "primary.dark",
+          },
+        }}
+      >
+        <span>Baixar APK</span>
+      </Box>
+    </a>
   );
 }
