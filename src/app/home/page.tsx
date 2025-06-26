@@ -1,7 +1,7 @@
 "use client";
 
 import Layout from "@/components/UI/organisms/Layout";
-
+import { useCallback } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import "../../style/MenuUser.css";
@@ -177,13 +177,25 @@ function Testimonials() {
 }
 
 function DownloadApkButton() {
+  const handleDownload = useCallback(async () => {
+    try {
+      const res = await fetch("/download-apk");
+      const data = await res.json();
+      if (data.url) {
+        window.open(data.url, "_blank");
+      } else {
+        alert("Erro ao obter link de download.");
+      }
+    } catch {
+      alert("Erro ao obter link de download.");
+    }
+  }, []);
+
   return (
     <Box
-      component="a"
-      href="https://bucketjoao01.s3.us-east-1.amazonaws.com/EcosRev.apk"
-      download
-      target="_blank"
-      rel="noopener noreferrer"
+      component="button"
+      type="button"
+      onClick={handleDownload}
       sx={{
         position: "fixed",
         bottom: 24,
@@ -201,6 +213,8 @@ function DownloadApkButton() {
         display: "flex",
         alignItems: "center",
         gap: 1,
+        border: "none",
+        cursor: "pointer",
         "&:hover": {
           backgroundColor: "primary.dark",
         },
