@@ -179,7 +179,7 @@ function Testimonials() {
 function DownloadApkButton() {
   const handleDownload = useCallback(async () => {
     try {
-      const res = await fetch("/download-apk");
+      const res = await fetch("https://ecosrev-api.duckdns.org/api/download-apk");
       const data = await res.json();
       if (data.url) {
         window.open(data.url, "_blank");
