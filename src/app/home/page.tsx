@@ -220,7 +220,7 @@ function DownloadApkButton() {
         },
       }}
     >
-      <span>Download APK</span>
+      <span>Baixar APK</span>
     </Box>
   );
 }
